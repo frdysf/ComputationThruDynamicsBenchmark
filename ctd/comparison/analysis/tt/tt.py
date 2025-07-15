@@ -155,7 +155,7 @@ class Analysis_TT(Analysis):
         return out_dict["latents"]
 
     def get_latents_pca(self, num_PCs=3):
-        latents = self.get_latents()
+        latents = self.get_latents().detach().numpy()
         B, T, N = latents.shape
         latents = latents.reshape(-1, N)
         pca = PCA(n_components=num_PCs)
